@@ -1,0 +1,220 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\IfFontExistsTF{Arial}{\setmainfont{Arial}}{\setmainfont{TeX Gyre Heros}}
+\IfFontExistsTF{Courier New}{\setmonofont{Courier New}}{\setmonofont{TeX Gyre Cursor}}
+\renewcommand{\contentsname}{İçindekiler}
+\usepackage[margin=22mm]{geometry}
+\usepackage{xcolor,tabularx,array,longtable,graphicx,fancyhdr,hyperref,fvextra}
+\definecolor{vurgu}{HTML}{923E32}
+\hypersetup{colorlinks=true,urlcolor=vurgu,linkcolor=vurgu}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\renewcommand{\arraystretch}{1.35}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Bir Varmış — Vize Raporu}
+\fancyhead[R]{\small 2026–2027 Güz}
+\fancyfoot[L]{\scriptsize Dastan Abdullayev}
+\fancyfoot[R]{\thepage}
+\setlength{\headheight}{15pt}
+\begin{document}
+\begin{titlepage}
+\centering
+{\large İstanbul Medipol Üniversitesi\\Görsel İletişim Tasarımı\par}
+\vspace{22mm}
+{\Huge\bfseries Bir Varmış\par}
+\vspace{5mm}
+{\Large Türk Masalları Derlemesi Web Sayfası\par}
+\vspace{5mm}
+{\Large Vize Raporu\par}
+\vspace{9mm}
+{\color{vurgu}\bfseries \par}
+\vspace{15mm}
+Ders: Programlamaya Giriş\\
+Öğretim Üyesi: Meral Şentürk\\
+Hazırlayan: Dastan Abdullayev\\
+Öğrenci No: 86230082\\
+Dönem: 2026–2027 Güz
+\vspace{12mm}
+\section*{Proje Bağlantıları}
+GitHub deposu: \url{https://github.com/dastanabdullayew0-spec/bir-varmis-masallar}\\
+Sunum videosu: Yapılmadı.
+\vfill
+Hazırlanma tarihi: 6 Kasım 2026\\
+
+\end{titlepage}
+\tableofcontents
+\newpage
+
+\section{Giriş}
+Bir Varmış projesinde, Türk halk anlatılarından seçilen sekiz masalı bir okuma sayfasında bir araya getirdim. Sayfanın amacı, masallara kolay ulaşılmasını ve metinlerin rahat okunmasını sağlamak. Bu nedenle dikkat dağıtan görseller yerine başlıkları ve okuma alanlarını öne çıkardım. Sayfanın içeriği HTML, görünümü CSS, arama ve yazı boyutu ayarı ise JavaScript ile düzenlendi. Bütün kodlar tek HTML dosyasında bulunuyor. Sayfanın açılması için ayrıca bir dosya indirmek veya bir kütüphane kurmak gerekmiyor.
+
+\subsection{Proje Özeti}
+Projenin adı Bir Varmış. Sayfada sekiz masalın kısa yeniden anlatımı yer alıyor. Okur bir başlığa tıklayarak metni açabiliyor, arama alanına masal adını yazarak listeyi daraltabiliyor. Aramanın altında kaç masalın görüntülendiği gösteriliyor. A+ ve A− düğmeleriyle masal metinlerinin boyutu değiştirilebiliyor. Çalışma, HTML dosyası tarayıcıda açılarak kullanılabiliyor.
+
+\subsection{Gereksinimlerin Karşılanması}
+\begin{longtable}{|p{0.42\linewidth}|p{0.42\linewidth}|}
+\hline \textbf{Gereksinim} & \textbf{Sayfadaki karşılığı} \\ \hline\endhead
+8–12 Türk masalı & Sekiz Türk masalının kısa yeniden anlatımı bulunuyor. \\ \hline
+Tek HTML dosyası & İçerik, CSS ve JavaScript aynı dosyada. \\ \hline
+İçsel CSS & Görünüm kuralları head içindeki style bölümünde. \\ \hline
+İçsel JavaScript & Arama ve okuma ayarı body sonundaki script bölümünde. \\ \hline
+İnternetsiz kullanım & Çalışmak için ağ isteği, harici font, kütüphane veya veri dosyası gerekmiyor. \\ \hline
+Anlamlı JavaScript & Başlık araması, sonuç sayısı ve yazı boyutu ayarı var. \\ \hline
+Masal metinleri ve kaynak & Kaynak kitaptaki anlatılar kısa Türkçe metinlere uyarlandı. Alınan destek Bölüm 5’te açıklandı. \\ \hline
+Telefon ekranına uyum & Dar ekranlarda araçların yerleşimini ve iç boşlukları değiştiren CSS kuralları var. Gerçek telefon testi yapılmadı. \\ \hline
+\end{longtable}
+\newpage
+\section{Masalların Seçimi}
+Seçkide yolculuk, kardeşlik, dayanışma, sihirli eşyalar ve gerçeğin ortaya çıkması gibi farklı konuların bir arada olmasını istedim. Aynı anlatım biçimini tekrarlamamak için zincirleme bir masala da yer verdim. Kaynak olarak Ignácz Kúnos’un derlediği Turkish Fairy Tales and Folk Tales kitabının Türk masalları bölümündeki anlatılar kullanıldı. Kitabın sonundaki Rumen masalları seçkiye alınmadı. Masal başlıklarının Türkçe karşılıkları ve kaynak bölümleri kaynakçada eşleştirildi.
+
+\begin{longtable}{|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|}
+\hline \textbf{No} & \textbf{Masal} & \textbf{Tür} & \textbf{Seçim gerekçesi} \\ \hline\endhead
+1 & Geyik Şehzade & Olağanüstü masal & Kardeşlerin birbirini bırakmamasını ve dönüşüm motifini öne çıkarması. \\ \hline
+2 & Üç Turunç Perisi & Olağanüstü masal & Yolculuk, sabır ve öğütleri dinleme konularını birleştirmesi. \\ \hline
+3 & Gül Güzeli & Olağanüstü masal & Haksızlığa rağmen umudun sürmesini anlatması. \\ \hline
+4 & Deli Mehmed & Olağanüstü / mizahi & Sihirli armağanlar üzerinden güven konusunu işlemesi. \\ \hline
+5 & Altın Saçlı Çocuklar & Olağanüstü masal & Ailenin ayrılması ve gerçeğin bulunması üzerine kurulması. \\ \hline
+6 & Kül Oğlan & Olağanüstü masal & Küçümsenen kahramanın başarısını ve Anka motifini içermesi. \\ \hline
+7 & Bir Parça Ciğer & Zincirleme masal & Bir isteğin başka bir isteğe bağlanarak ilerlemesi. \\ \hline
+8 & Sihirli Sarık, Kamçı ve Halı & Olağanüstü masal & Olağanüstü araçlarla çözülen bir gizemi anlatması. \\ \hline
+\end{longtable}
+\newpage
+\section{Tasarım Kararları}
+\subsection{Konuya Uygunluk}
+Masal sayfasında sakin ve metni öne çıkaran bir görünüm kullandım. Arka planı çok açık yeşil olarak seçtim. Masalların bulunduğu alanları kırık beyaz yaparak metni zeminden ayırdım. Başlıklarda ve düğmelerde kiremit rengi kullanıldı. Sayfada hazır tema, indirilen web şablonu veya görsel dosyası bulunmuyor. Tasarımın temelini okuma alanları, boşluklar ve başlıklar oluşturuyor.
+
+\subsection{Renk Paleti ve Yazı Tipi}
+\begin{longtable}{|p{0.28\linewidth}|p{0.28\linewidth}|p{0.28\linewidth}|}
+\hline \textbf{Öğe} & \textbf{Değer} & \textbf{Kullanım nedeni} \\ \hline\endhead
+Arka plan & \#eef7ed & Çok açık yeşil; sakin ve açık bir okuma zemini. \\ \hline
+Masal alanı & \#fffdf8 & Metni sayfanın genel zemininden ayırma. \\ \hline
+Metin & \#302a24 & Açık arka planda belirgin bir yazı rengi. \\ \hline
+Vurgu & \#923e32 & Başlık ve düğmeleri fark edilir kılma. \\ \hline
+Georgia & Sistem yazı tipi & Masal metinlerinde kitap hissi. \\ \hline
+Arial & Sistem yazı tipi & Arama ve düğmelerde sade görünüm. \\ \hline
+\end{longtable}
+\subsection{Okunabilirlik, Gezinme ve Duyarlı Tasarım}
+Masal metinlerinin başlangıç boyutu 18 piksel. Okur bunu 16 ile 24 piksel arasında değiştirebiliyor. Satır aralığı 1,8 olarak ayarlandı; satırların gereğinden fazla uzamaması için metin genişliği 65ch ile sınırlandı. Masal başlıklarının açılıp kapanması, bütün metinlerin aynı anda ekranı doldurmasını önlüyor. Başlık araması, istenen masala daha kısa yoldan ulaşmayı sağlıyor. İçerik alanı 900 pikseli geçmiyor; dar ekranlarda mevcut genişliğe uyuyor. 600 piksel ve altında arama alanı ayrı satıra geçiyor, iç boşluklar azalıyor. Aynı renk ve boşluk kuralları bütün masallarda korunuyor.
+
+\subsection{Ekran Görüntüleri}
+Bu rapora ekran görüntüsü eklenmedi.
+
+\newpage
+\section{Gerçekleştirme}
+\subsection{HTML Yapısı}
+Üst bölüm header, ana içerik main, kaynak bilgisi footer içinde yer alıyor. Her masal için bir details elemanı var. summary, bu elemanın tıklanan başlığı. Başlığa basılınca metin açılıyor veya kapanıyor; bu özellik JavaScript değil, HTML tarafından sağlanıyor. class="masal" bütün masalların ortak görünüm ve seçim için gruplanmasını sağlıyor. id değerleri ise arama alanı, sonuç sayacı ve düğmeler gibi tek elemanları bulmak için kullanılıyor.
+
+\subsection{İçsel CSS}
+CSS kodu, HTML dosyasının head bölümündeki style etiketleri arasında. Arama alanı ile düğmeler Flex düzeniyle yerleştirildi. flex-wrap, alan daraldığında alt satıra geçilmesini sağlıyor. Medya sorgusu dar ekranlarda iç boşlukları ve arama alanının genişliğini değiştiriyor. Masal metninin boyutu --okuma-boyutu adlı CSS değişkeninden okunuyor; değişken ayarlanmadıysa 18 piksel kullanılıyor.
+
+\begin{Verbatim}[fontsize=\small,breaklines=true,frame=single]
+.masal p {
+  font-size: var(--okuma-boyutu, 18px);
+  max-width: 65ch;
+}
+@media (max-width: 600px) {
+  .arama-alani { flex-basis: 100%; }
+}
+\end{Verbatim}
+\subsection{İçsel JavaScript}
+JavaScript kodu body bölümünün sonunda bulunuyor. Böylece kod çalışırken HTML elemanları oluşmuş oluyor. masallariAra fonksiyonu, arama kutusundaki metni ve masal başlıklarını Türkçe küçük harfe çeviriyor. includes ile başlığın aranan kelimeyi içerip içermediğine bakılıyor. Eşleşmeyen masallar hidden özelliğiyle gizleniyor; eşleşenler sayılarak sonuç bilgisi güncelleniyor. yaziyiAyarla fonksiyonu yazı boyutunu 16–24 aralığında tutuyor ve CSS değişkenini değiştiriyor. Arama input olayına, boyut düğmeleri click olayına bağlı.
+
+\begin{Verbatim}[fontsize=\small,breaklines=true,frame=single]
+const kelime = arama.value.trim().toLocaleLowerCase("tr");
+const uygun = baslik.includes(kelime);
+masal.hidden = !uygun;
+if (uygun) bulunan++;
+\end{Verbatim}
+\subsection{Sayfanın Özellikleri}
+Sayfada sekiz masalın açılıp kapanması, masal adına göre arama, eşleşen masal sayısı, sonuç bulunamadı mesajı ve okuma boyutu ayarı bulunuyor. Klavyeyle gezinirken odaklanan kontrolün çevresi belirginleşiyor. Sonuç bilgisi ekran okuyucuya bildirilmek üzere işaretlendi. Arama yalnız başlıklarda yapılıyor; gul ile gül aynı kabul edilmiyor. Yazı boyutu ayarı araçlara değil, masal paragraflarına uygulanıyor.
+
+\newpage
+\section{Yapay Zekâ Kullanımı}
+Bu çalışmada ChatGPT’den kodun hazırlanması ve açıklanması için destek aldım. HTML ve CSS düzeni, arama fonksiyonu ve yazı boyutu ayarı bu destekle oluşturuldu. Masalların kısa yeniden anlatımları ve rapor metninin düzenlenmesinde de aynı araçtan yararlanıldı. Çok açık yeşil arka plan benim isteğimle seçildi. Yapay zekâyla görsel üretilmedi ve hazır bir web sitesi teması kullanılmadı.
+
+\begin{longtable}{|p{0.28\linewidth}|p{0.28\linewidth}|p{0.28\linewidth}|}
+\hline \textbf{Araç} & \textbf{Kullanım alanı} & \textbf{İstem özeti} \\ \hline\endhead
+ChatGPT & HTML, CSS ve JavaScript & Tek HTML dosyasında çalışan, sekiz masallı; arama ve okuma ayarı bulunan sade sayfa. \\ \hline
+ChatGPT & Masal metinleri & Kaynak anlatılardan kısa Türkçe yeniden anlatımlar. \\ \hline
+ChatGPT & Kod açıklaması ve rapor dili & Fonksiyonların açıklanması ve raporun bölüm sırasıyla düzenlenmesi. \\ \hline
+\end{longtable}
+\subsection{Anladığım ve Kendim Yaptığım Kısımlar}
+Arka planın çok açık yeşile değiştirilmesini istedim. Kod yapısında HTML açılıp kapanan masal alanlarını, CSS görünümü, JavaScript ise arama ve yazı boyutu ayarını yönetiyor. Bu ayrım, sayfanın hangi bölümünün ne işe yaradığını açıklamak için kullanılıyor. Yapay zekâdan alınan kod desteği bu bölümde, yapılan testlerin kapsamı ise Bölüm 7’de belirtiliyor.
+
+\section{Haftalık Katkılar}
+\begin{longtable}{|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|}
+\hline \textbf{Hafta} & \textbf{Tarih} & \textbf{Yapılan çalışma} & \textbf{Commit / katılım} \\ \hline\endhead
+1. hafta &  &  &  \\ \hline
+2. hafta &  &  &  \\ \hline
+3. hafta &  &  &  \\ \hline
+4. hafta &  &  &  \\ \hline
+5. hafta &  &  &  \\ \hline
+6. hafta &  &  &  \\ \hline
+7. hafta &  &  &  \\ \hline
+8. hafta &  &  &  \\ \hline
+\end{longtable}
+\newpage
+\section{Test ve Değerlendirme}
+Arama ve yazı boyutu mantığı, tarayıcı elemanlarını temsil eden bir kontrol ortamında denendi. Bu kontrolün sonucu, gerçek bilgisayar ve telefon kullanımını doğrulamakla aynı şey değildir. Tarayıcı önizleme bağlantısı zaman aşımına uğradı. Bu nedenle cihaz üzerinde yapılmayan denemeler aşağıdaki tabloda Yapılmadı olarak belirtildi.
+
+\begin{longtable}{|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|p{0.21\linewidth}|}
+\hline \textbf{Özellik} & \textbf{Kod düzeyinde kontrol} & \textbf{Gerçek bilgisayar} & \textbf{Gerçek telefon} \\ \hline\endhead
+Sekiz masal ve içsel CSS/JS & Geçti & Yapılmadı & Yapılmadı \\ \hline
+Türkçe başlık araması & Geçti & Yapılmadı & Yapılmadı \\ \hline
+Sıfır sonuç ve aramayı temizleme & Geçti & Yapılmadı & Yapılmadı \\ \hline
+16–24 boyut sınırı ve düğmeler & Geçti & Yapılmadı & Yapılmadı \\ \hline
+HTML aç/kapat ve klavye kullanımı & Yapılmadı & Yapılmadı & Yapılmadı \\ \hline
+İnternet kapalı dosya açılışı & Harici bağımlılık yok & Yapılmadı & Yapılmadı \\ \hline
+Dar ekranda görsel görünüm & Duyarlı CSS var & Yapılmadı & Yapılmadı \\ \hline
+\end{longtable}
+Gerçek cihaz ve tarayıcı denemesi yapılmadığı için bu konuda cihaz veya tarayıcı adı verilmedi. Mevcut kodun internetsiz çalışmasına engel olacak harici bir yükleme yok; gerçek çevrimdışı açılış denemesi yapılmadı.
+
+\section{Sunum Videosu}
+Durum: Henüz yapılmadı. Video bağlantısı: —
+
+\subsection{Video Kontrol Listesi}
+\begin{longtable}{|p{0.42\linewidth}|p{0.42\linewidth}|}
+\hline \textbf{İşlem} & \textbf{Durum} \\ \hline\endhead
+12–18 dakikalık sunum kaydı & Yapılmadı \\ \hline
+Kamera ve ses kaydı & Yapılmadı \\ \hline
+YouTube’a yükleme & Yapılmadı \\ \hline
+Görünürlük ve bağlantı denemesi & Yapılmadı \\ \hline
+Video bağlantısını rapora ve README’ye ekleme & Yapılmadı \\ \hline
+\end{longtable}
+\newpage
+\section{Sonuç ve Kendi Değerlendirmem}
+Bu projede masal okumayı kolaylaştıran sade bir sayfaya odaklandım. Çok açık yeşil arka plan, açık metin alanları ve belirgin başlıklarla düzenli bir görünüm hedefledim. Masalların ayrı başlıklar altında açılması, sayfanın daha kolay gezilmesini sağlıyor. Arama alanı belirli bir masala ulaşmayı, yazı boyutu düğmeleri ise okuma alanını kişiye göre ayarlamayı amaçlıyor. Projenin tek dosyada tutulması, dosyanın taşınmasını ve internet bağlantısı olmadan kullanılmasını kolaylaştırıyor. Kod ve metinlerin hazırlanmasında aldığım yapay zekâ desteğini raporda belirttim. İleride masalları konuya göre süzme ve okuma konumunu hatırlama gibi özellikler eklemek isterim. Gerçek cihaz testleri ve sunum videosu bu çalışmada yapılmadı.
+
+\section{Kaynakça}
+Kúnos, Ignácz (der.); Bain, R. Nisbet (çev.). (1901). Turkish Fairy Tales and Folk Tales. London: A. H. Bullen. Project Gutenberg eBook 64807. https://www.gutenberg.org/ebooks/64807 Erişim: 6 Kasım 2026. Seçilen masallar kitabın Türk masalları bölümünde yer alıyor.
+
+\begin{longtable}{|p{0.42\linewidth}|p{0.42\linewidth}|}
+\hline \textbf{Sayfadaki başlık} & \textbf{Kaynak bölüm} \\ \hline\endhead
+Geyik Şehzade & The Stag-Prince \\ \hline
+Üç Turunç Perisi & The Three Orange-Peris \\ \hline
+Gül Güzeli & The Rose-Beauty \\ \hline
+Deli Mehmed & Mad Mehmed \\ \hline
+Altın Saçlı Çocuklar & The Golden-Haired Children \\ \hline
+Kül Oğlan & The Cinder-Youth \\ \hline
+Bir Parça Ciğer & The Piece of Liver \\ \hline
+Sihirli Sarık, Kamçı ve Halı & The Magic Turban, the Magic Whip, and the Magic Carpet \\ \hline
+\end{longtable}
+Ödev bilgilendirmesi: Meral Şentürk, Programlamaya Giriş – Vize Bilgilendirme, 2026–2027 Güz, 7 sayfalık ders PDF’i. Raporun bölüm sırası: ders kapsamında verilen 9 sayfalık Vize Raporu PDF şablonu. Kullanılan yapay zekâ aracı: ChatGPT; kullanım kapsamı Bölüm 5’te açıklandı.
+
+\appendix
+\section{Teslim Kontrol Listesi}
+\begin{longtable}{|p{0.42\linewidth}|p{0.42\linewidth}|}
+\hline \textbf{Öğe} & \textbf{Durum} \\ \hline\endhead
+Tek HTML dosyası & Hazır \\ \hline
+İçsel CSS ve JavaScript & Dosyada mevcut \\ \hline
+Rapor metni ve düzenlenebilir LaTeX kaynağı & Hazır \\ \hline
+Kaynakça ve yapay zekâ kullanım açıklaması & Raporda mevcut \\ \hline
+Gerçek bilgisayar ve telefon testleri & Yapılmadı \\ \hline
+Haftalık katkı kaydı & Boş bırakıldı \\ \hline
+Sunum videosu & Yapılmadı \\ \hline
+GitHub deposu & Oluşturuldu \\ \hline
+MEBİS’e PDF teslimi & Yapılmadı \\ \hline
+\end{longtable}
+\end{document}

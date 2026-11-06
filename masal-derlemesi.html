@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bir Varmış | Türk Masalları</title>
+  <!-- 1. CSS: Renkler, yerleşim ve okunabilirlik -->
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #eef7ed; color: #302a24; font-family: Georgia, serif; }
+    header, main, footer { max-width: 900px; margin: auto; padding: 24px; }
+    header { padding-top: 48px; border-bottom: 2px solid #923e32; }
+    .ust-yazi { color: #923e32; font: bold 13px Arial, sans-serif; letter-spacing: 3px; }
+    h1 { font-size: clamp(38px, 7vw, 64px); margin: 16px 0; }
+    h2 { font-size: 24px; }
+    p { line-height: 1.8; }
+    .araclar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 20px 0; }
+    .arama-alani { flex: 1; min-width: 200px; }
+    label { display: block; font: bold 15px Arial, sans-serif; margin-bottom: 8px; }
+    input, button { font: 16px Arial, sans-serif; border: 1px solid #867565; border-radius: 8px; padding: 12px; }
+    input { width: 100%; background: #fffdf8; color: #302a24; }
+    button { background: #923e32; color: white; cursor: pointer; }
+    button:hover { background: #713026; }
+    button:disabled { opacity: .5; cursor: default; }
+    :focus-visible { outline: 3px solid #245b61; outline-offset: 4px; }
+    #sayac { font: 14px Arial, sans-serif; color: #65594e; }
+    .masal { background: #fffdf8; border: 1px solid #d8cbb9; border-radius: 12px; margin: 16px 0; padding: 20px; }
+    summary { cursor: pointer; font-size: 22px; font-weight: bold; }
+    .masal[open] summary { color: #923e32; margin-bottom: 16px; }
+    .masal p { font-size: var(--okuma-boyutu, 18px); max-width: 65ch; }
+    .etiket { display: block; margin: 10px 0; color: #65594e; font: 13px Arial, sans-serif; }
+    [hidden] { display: none !important; }
+    footer { border-top: 1px solid #d8cbb9; font-size: 14px; }
+    a { color: #713026; overflow-wrap: anywhere; }
+    @media (max-width: 600px) {
+      header, main, footer { padding: 20px; }
+      .arama-alani { flex-basis: 100%; }
+      .masal { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 2. HTML: Başlık ve okuma araçları -->
+  <header>
+    <p class="ust-yazi">TÜRK MASALLARI DERLEMESİ</p>
+    <h1>Bir Varmış</h1>
+    <p>Sekiz masal, sekiz ayrı yolculuk. Bir başlığa dokun, masalın kapısını arala.</p>
+  </header>
+  <main>
+    <section aria-label="Okuma araçları">
+      <div class="araclar">
+        <div class="arama-alani">
+          <label for="arama">Masal adına göre ara</label>
+          <input id="arama" type="search" placeholder="Örneğin: Gül Güzeli">
+        </div>
+        <button id="kucult" type="button" aria-label="Masal yazısını küçült">A−</button>
+        <button id="buyut" type="button" aria-label="Masal yazısını büyüt">A+</button>
+      </div>
+      <p id="sayac" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- 3. Masallar: Örnek kısa uyarlamalar; teslimden önce kendi anlatımınla düzenle. -->
+    <section id="masallar" aria-label="Masal derlemesi">
+      <details class="masal" open>
+        <summary>Geyik Şehzade</summary>
+        <span class="etiket">Kardeşlik · Kısa yeniden anlatım</span>
+        <p>Bir varmış, bir yokmuş. Babalarından kalan serveti tüketen iki kardeş, yeni bir hayat aramak için saraydan ayrılmış. Uzun bir yolculuğun sonunda oğlan çok susamış. Kız kardeşinin uyarısına rağmen yol kenarındaki birikintiden içmiş ve bir geyiğe dönüşmüş. Kız onu yalnız bırakmamış; bir ağacın yanında birlikte yaşamaya başlamışlar.</p>
+        <p>O ülkenin hükümdarı genç kızla karşılaşmış. Kız, geyik kardeşi de yanında kalacaksa saraya gitmeyi kabul etmiş. Fakat saraydaki kıskanç biri onu bahçedeki havuza itmiş. Büyük bir balık kızı yutmuş; yerine geçen kişi de geyiği uzaklaştırmaya çalışmış.</p>
+        <p>Geyik havuz başına gidip kardeşine seslenince hükümdar konuşmalarını duymuş. Havuzdaki balık çıkarılmış, genç kız ve bebeği kurtarılmış. Geyik de büyünün çözülmesiyle yeniden insan olmuş. Birbirlerini bırakmayan kardeşler sonunda güven içinde yaşamaya başlamış.</p>
+      </details>
+      <details class="masal">
+        <summary>Üç Turunç Perisi</summary>
+        <span class="etiket">Yolculuk · Kısa yeniden anlatım</span>
+        <p>Bir şehzade, yaşlı bir kadının sözleri üzerine üç turunç perisini bulmayı aklına koymuş. Dağları, ovaları aşmış; yol boyunca karşılaştığı olağanüstü varlıklara saygılı davranmış. Sonunda bir yardımcı onu sihirli bir bahçeye götürmüş. Şehzade üç turuncu almış; ama onları yalnızca suyun yanında açması gerektiği söylenmiş.</p>
+        <p>Merakına yenilip ilk iki turuncu susuz bir yerde açmış. İçlerinden çıkan periler su bulamayınca kaybolmuş. Üçüncüyü bir pınarın başında açmış ve periye hemen su vermiş. Bu kez peri yanında kalmış. Şehzade hazırlık yapmak için ayrıldığında kıskanç bir kişi perinin yerine geçmiş.</p>
+        <p>Peri çeşitli dönüşümlerden sonra yaşlı bir kadının evine ulaşmış. Kadın olup biteni öğrenip şehzadeyi yemeğe çağırmış. Şehzade gerçek periyi tanımış, aldatıldığını anlamış. Böylece uzun arayışı sona ermiş; aceleciliğinin ve verdiği sözü unutmasının nelere yol açtığını da görmüş.</p>
+      </details>
+      <details class="masal">
+        <summary>Gül Güzeli</summary>
+        <span class="etiket">Umut · Kısa yeniden anlatım</span>
+        <p>Yoksul bir evde doğan küçük kıza üç peri armağan vermiş: Gülünce güller açacak, ağlayınca inciler dökülecek, yürüyünce geçtiği yer yeşerecekmiş. Kız büyümüş ve ünü saraya kadar ulaşmış. Şehzade onunla evlenmek istemiş. Fakat kıskanç bir kadın, kendi kızını onun yerine geçirmek için yola çıkmış.</p>
+        <p>Kadın Gül Güzeli'ni susuz bırakmış, gözlerini almış ve onu ıssız bir yerde terk etmiş. Yaşlı bir adam kızı bulup evine götürmüş. Kız yeniden gülümsediğinde açan güller, kurtuluşunun anahtarı olmuş. Adam gülleri saraya götürüp kızın gözlerini geri almış. Gül Güzeli yeniden görmeye başlamış.</p>
+        <p>Kıskanç kadının oyunları bununla bitmemiş; kızın yaşamını koruyan mercan tılsımı saklamış. Ancak tılsım sonunda bulunmuş ve Gül Güzeli yeniden hayata dönmüş. Şehzade gerçeği öğrenmiş. Aile kavuşmuş, yapılan haksızlık ortaya çıkmış ve evlerine yeniden sevinç gelmiş.</p>
+      </details>
+      <details class="masal">
+        <summary>Deli Mehmed</summary>
+        <span class="etiket">Sihirli armağanlar · Kısaltılmış yeniden anlatım</span>
+        <p>Bir zamanlar, davranışları yüzünden herkesin şaşırdığı Mehmed adında bir genç varmış. Ağabeyiyle çıktığı yolculukta başına türlü işler gelmiş. Sonunda tek başına kalıp başka köylere yürümüş. Elindekini nasıl koruyacağını henüz bilmeyen Mehmed, olağanüstü armağanlarla karşılaşmış.</p>
+        <p>Bu armağanlardan biri yiyecek hazırlayan küçük bir sofra, diğeri değerli şeyler veren bir değirmenmiş. Mehmed bunlarla rahat edeceğini düşünmüş. Ancak güvendiği insanlar armağanlarını ondan almış. Başına geleni anlayınca yeniden yola koyulmuş ve bu kez iki sihirli değnek edinmiş.</p>
+        <p>Mehmed köylüleri bir araya toplamış. Değneklerin gücünü görünce kimse çaldığı eşyaları saklayamamış. Sofra ve değirmen geri verilmiş. Mehmed değnekleri durdurmuş, armağanlarını alıp kendi köyüne dönmüş. Ağabeyiyle yeniden buluşmuş; yaşadıklarından sonra elindekilerin kıymetini ve kime güveneceğini daha iyi düşünmeye başlamış.</p>
+      </details>
+      <details class="masal">
+        <summary>Altın Saçlı Çocuklar</summary>
+        <span class="etiket">Aile · Kısa yeniden anlatım</span>
+        <p>Bir hükümdar, üç kız kardeşin konuşmasını duymuş. En küçükleri, altın saçlı iki çocuğu olacağını söylemiş. Hükümdar onunla evlenmiş; gerçekten de biri kız, biri oğlan iki çocuk doğmuş. Kıskançlık yüzünden bebekler annelerinden uzaklaştırılıp suya bırakılmış. Yaşlı bir çift onları bulmuş ve kendi çocukları gibi büyütmüş.</p>
+        <p>Kardeşler büyüyünce birbirlerine destek olmuş. Oğlan avlanırken hükümdarla karşılaşmış; fakat henüz kim oldukları anlaşılmamış. Kötülük isteyen bir kadın, kız kardeşi sihirli bir dal ve ayna istemeye yönlendirmiş. Oğlan bunları bulmak için tehlikeli yolculuklara çıkmış. Kendisine verilen öğütleri dinleyerek engelleri aşmış.</p>
+        <p>Yolculuklar onları peri ülkesine kadar götürmüş. Sonunda saklanan gerçek açıklanmış; kardeşlerin hükümdarın çocukları olduğu anlaşılmış. Annelerine yapılan haksızlık ortaya çıkmış ve aile yeniden bir araya gelmiş. Çocukların birbirlerine bağlılığı, uzun ayrılığın ardından kavuşmalarını sağlamış.</p>
+      </details>
+      <details class="masal">
+        <summary>Kül Oğlan</summary>
+        <span class="etiket">Cesaret · Kısa yeniden anlatım</span>
+        <p>Üç erkek kardeşin en küçüğü, vaktini külün içinde geçirdiği için küçümsenirmiş. Bir gün kız kardeşleri kaybolmuş. Onu arayan büyük kardeşler de bir devin eline düşmüş. Bu kez küçük kardeş yola hazırlanmış. Gücüne dayanacak bir mızrak yaptırmış ve ailesini aramaya çıkmış.</p>
+        <p>Yoldaki sınavları geçip devi yenmiş, kardeşlerini kurtarmış. Dönüşte bir kuyunun dibine inmiş ve orada tutsak üç genç kız bulmuş. Onları yukarı göndermiş; fakat kendisi kuyuda bırakılmış. Kendisine verilen sihirli bir kutu sayesinde yolunu bulmaya çalışmış.</p>
+        <p>Yeraltında bir ağacın üstündeki yavru kuşları tehlikeden kurtarmış. Yavruların annesi Anka, ona yardım etmeyi kabul etmiş. Uzun yolculuk için yiyecek ve su hazırlanmış. Anka onu ve kurtardığı kızları yeryüzüne taşımış. Küçümsenen genç, ailesine kavuşmuş ve cesaretini yaptıklarıyla göstermiş.</p>
+      </details>
+      <details class="masal">
+        <summary>Bir Parça Ciğer</summary>
+        <span class="etiket">Zincirleme masal · Kısa yeniden anlatım</span>
+        <p>Yaşlı bir kadın, genç bir kızı pazara ciğer almaya göndermiş. Kız aldığı ciğeri suyun yanında yıkarken bir leylek gelip onu kapmış. Kız ciğerini geri isteyince leylek karşılığında bir arpa başağı istemiş. Kız başağın yanına gitmiş, fakat başağın da büyümek için yağmura ihtiyacı varmış.</p>
+        <p>Böylece istekler birbirine eklenmiş. Kız birinden tütsülük, diğerinden ayakkabı, bir başkasından deri istemiş. Her biri, önce başka bir şeyi getirmesini söylemiş. Öküz saman istemiş; kız da çiftçiye gidip saman almış. Küçük görünen sorun, uzun bir yolculuğa dönüşmüş.</p>
+        <p>Samanı alınca bütün işler ters sırayla çözülmeye başlamış. Öküzden deriye, deriden ayakkabıya uzanan alışverişler tamamlanmış. Sonunda yağmur yağmış, başak büyümüş ve leyleğin istediği arpa bulunmuş. Leylek ciğeri geri vermiş. Kız da eve dönmüş; bir işin çözümünün bazen başka birçok işe bağlı olduğunu görmüş.</p>
+      </details>
+      <details class="masal">
+        <summary>Sihirli Sarık, Kamçı ve Halı</summary>
+        <span class="etiket">Gizem · Kısa yeniden anlatım</span>
+        <p>Bir genç, yolculuğu sırasında miraslarını paylaşamayan üç kardeş görmüş. Ellerinde görünmez yapan bir sarık, uçan bir halı ve halıyı harekete geçiren bir kamçı varmış. Genç onları bir yarışa gönderip eşyaları almış. Halıya oturmuş ve uzak bir şehre ulaşmış.</p>
+        <p>Şehirde herkes, hükümdarın kızının geceleri nereye gittiğini merak ediyormuş. Genç bu sırrı çözmeyi üstlenmiş. Sarığı takıp görünmez olmuş ve kızın peşinden gitmiş. Onu başka bir yere taşıyan olağanüstü varlığı görmüş; gördüklerini kanıtlayacak izler toplamış.</p>
+        <p>Genç, sihirli eşyaların yardımıyla gizli yolculuğun sırrını ortaya çıkarmış. Ağabeyiyle de yeniden karşılaşmış. Sonunda olanları hükümdara anlatmış; ağabeyinin sarayda kalmasını, kendisinin ise sihirli eşyalarla yakınında yaşamasını istemiş. Başlangıçta ayrılan iki kardeş böylece yeniden aynı yerde yaşamaya başlamış.</p>
+      </details>
+    </section>
+    <p id="bos" hidden>Bu adla bir masal bulunamadı. Başka bir kelime deneyebilirsin.</p>
+  </main>
+  <footer>
+    <p>Bir Varmış · Türk halk anlatılarından sekiz kısa yeniden anlatım.</p>
+    <p>Kaynak: Ignácz Kúnos (der.), R. Nisbet Bain (çev.), <cite>Turkish Fairy Tales and Folk Tales</cite>, 1901. Türk masalları bölümü.</p>
+    <p><a href="https://www.gutenberg.org/ebooks/64807">Kaynak kitabı çevrimiçi incele</a> · Masalları okumak için internet gerekmez.</p>
+  </footer>
+
+  <!-- 4. JavaScript: Başlık araması ve yazı boyutu ayarı -->
+  <script>
+    const arama = document.getElementById("arama");
+    const masallar = document.querySelectorAll(".masal");
+    const sayac = document.getElementById("sayac");
+    const bos = document.getElementById("bos");
+    const kucult = document.getElementById("kucult");
+    const buyut = document.getElementById("buyut");
+    let boyut = 18;
+
+    function masallariAra() {
+      const kelime = arama.value.trim().toLocaleLowerCase("tr");
+      let bulunan = 0;
+      masallar.forEach(function (masal) {
+        const baslik = masal.querySelector("summary").textContent.toLocaleLowerCase("tr");
+        const uygun = baslik.includes(kelime);
+        masal.hidden = !uygun;
+        if (uygun) bulunan++;
+      });
+      sayac.textContent = bulunan + " / " + masallar.length + " masal gösteriliyor";
+      bos.hidden = bulunan > 0;
+    }
+
+    function yaziyiAyarla(degisim) {
+      boyut = Math.max(16, Math.min(24, boyut + degisim));
+      document.getElementById("masallar").style.setProperty("--okuma-boyutu", boyut + "px");
+      kucult.disabled = boyut === 16;
+      buyut.disabled = boyut === 24;
+    }
+
+    arama.addEventListener("input", masallariAra);
+    kucult.addEventListener("click", function () { yaziyiAyarla(-2); });
+    buyut.addEventListener("click", function () { yaziyiAyarla(2); });
+    masallariAra();
+  </script>
+</body>
+</html>
